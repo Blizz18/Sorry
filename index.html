@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Card</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #dfe9f3, #ffffff);
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+    }
+
+    /* Button bounce animation */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    .open-btn {
+        padding: 14px 34px;
+        background: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        animation: bounce 2s infinite;
+        transition: 0.3s;
+    }
+
+    .open-btn:hover {
+        transform: scale(1.08);
+        background: #3c7ac5;
+    }
+
+    /* Card opening animation */
+    .card {
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        background: #fff8e7;
+        border-radius: 18px;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+        border: 2px solid #f3e0b5;
+        display: none;
+        transform: scale(0.6);
+        opacity: 0;
+        animation: openCardAnim 0.7s ease forwards;
+    }
+
+    @keyframes openCardAnim {
+        0% { transform: scale(0.5); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #2b4d6e;
+        font-weight: 600;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    p {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+
+    /* Confetti Animation */
+    .confetti {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        opacity: 0;
+        animation: fall 2.5s linear forwards;
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(700px) rotate(360deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <button class="open-btn" onclick="openCard()">Open PLS?</button>
+
+    <div class="card" id="card">
+        <h2>Hey Saumya, Sorry for everything (Just See Once)</h2>
+
+        <p>
+I know I’ve made a big mistake, and I truly hurt your feelings. I’m sincerely apologising from my heart. I understand that you need time, so please take all the time you need. I’ll give you space and won’t disturb you, can i do yapping with you? like my day to day life talks? pls?????. I genuinely feel very bad for what happened, and I am truly sorry.
+
+You don’t have to reply if you don’t feel like it. I also know you don’t prefer when I keep apologising, so this will be the last time. I’ll wait patiently and you also give the time upto Feb.
+
+JUST A THOUGHT IN MY MIND:
+You’ve talked to me enough to know what kind of person I am. Still, do you really think I would ever do something wrong on purpose or think badly?
+I know things feel off right now, and it’ll take some time for everything to be okay. But I’ll do my best to bring our bond back to how it was.
+        </p>
+
+        <p style="text-align:center; margin-top: 20px; color:#2b4d6e; font-weight:600;">
+            — From a friend who truly cares
+        </p>
+    </div>
+</div>
+
+<script>
+function openCard() {
+    const card = document.getElementById("card");
+    card.style.display = "block";
+
+    // Confetti burst
+    for (let i = 0; i < 35; i++) {
+        let conf = document.createElement("div");
+        conf.classList.add("confetti");
+        
+        conf.style.left = Math.random() * window.innerWidth + "px";
+        conf.style.top = "-20px";
+        conf.style.background = randomColor();
+        conf.style.animationDuration = (Math.random() * 1.2 + 1.5) + "s";
+        
+        document.body.appendChild(conf);
+        
+        setTimeout(() => {
+            conf.remove();
+        }, 2600);
+    }
+}
+
+function randomColor() {
+    const colors = ["#ff6b6b", "#ffd93d", "#6bcdfd", "#a66bff", "#4ffa9b"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+</script>
+
+</body>
+</html>
